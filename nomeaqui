@@ -52,35 +52,6 @@ local miscTab = Window:MakeTab({
 local Section = PremiumTab:AddSection({
     Name = "Purchase Premium On Discord!"
 })
-
-PremiumTab:AddButton({
-	Name = "open premium version",
-	Callback = function()
-        getgenv().keys = {
-        }
-        
-        getgenv().validKey = true
-        
-        -- anti afk
-        
-        wait(0.5)
-        
-        local bb = game:GetService("VirtualUser")
-        game:GetService("Players").LocalPlayer.Idled:Connect(function()
-            bb:CaptureController()
-            bb:ClickButton2(Vector2.new())
-        end)
-        
-        
-        getgenv().MessageBox = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/NotificationGUI/main/source.lua"))()
-        
-        if getgenv().validKey then
-            getgenv().MessageBox.Show({MessageBoxButtons = "OK", Description = "", Text = ""})
-        else
-            getgenv().MessageBox.Show({MessageBoxButtons = "OK", Description = "", Text = ""})
-        return
-        end
-
         -- Booting The Library
         local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
         
