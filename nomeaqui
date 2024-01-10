@@ -2,7 +2,7 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
 -- creating window
-local Window = OrionLib:MakeWindow({Name = "Tsuo Hub | Made By Mani", HidePremium = true, IntroText = "Tsuo Hub", SaveConfig = true, ConfigFolder = "Tsuo Hub"})
+local Window = OrionLib:MakeWindow({Name = "Tsuo Hub", HidePremium = true, IntroText = "Tsuo Hub", SaveConfig = true, ConfigFolder = "Tsuo Hub"})
 
 
  -- tabs
@@ -154,7 +154,7 @@ PremiumTab:AddButton({
         local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
         
         -- creating window
-        local Window = OrionLib:MakeWindow({Name = "Tsuo Hub | Made By Mani", HidePremium = true, IntroText = "Tsuo Hub", SaveConfig = true, ConfigFolder = "Tsuo Hub"})
+        local Window = OrionLib:MakeWindow({Name = "Tsuo Hub", HidePremium = true, IntroText = "Tsuo Hub", SaveConfig = true, ConfigFolder = "Tsuo Hub"})
         
         
          -- tabs
@@ -477,8 +477,8 @@ PremiumTab:AddButton({
                toggle = false,
                singleTarget = false,
                farmPrint = false,
-               radius = 70,
-               wait = 0.2
+               radius = 200,
+               wait = 0.0
            },
            autoLootbag = false,
            autoOrb = false
