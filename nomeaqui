@@ -1,325 +1,59 @@
+-- Booting The Library
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
-        -- Booting The Library
-        local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-        
-        -- creating window
-        local Window = OrionLib:MakeWindow({Name = "Tsuo Hub made by mani", HidePremium = false, IntroText = "by maniautisticx", SaveConfig = true, ConfigFolder = "Tsuo Hub"})
-        
-        
-         -- tabs
-        
-         local CreditsTab = Window:MakeTab({
-           Name = "Credits/Discord",
-           Icon = "rbxassetid://4559100997",
-           PremiumOnly = false
-        })
-        
-         local MiniGamesTab = Window:MakeTab({
-           Name = "MiniGames",
-           Icon = "rbxassetid://4483345998",
-           PremiumOnly = false
-        })
-        
-        local PremiumTab = Window:MakeTab({
-            Name = "Premium",
-            Icon = "rbxassetid://4483345998",
-            PremiumOnly = false
-         })
-        
-        local AutoFarmTab = Window:MakeTab({
-           Name = "AutoFarm",
-           Icon = "rbxassetid://4483345998",
-           PremiumOnly = false
-        })
-        
-        local ShopTab = Window:MakeTab({
-           Name = "Shop",
-           Icon = "rbxassetid://4483345998",
-           PremiumOnly = false
-        })
-        
-        local EggysTab = Window:MakeTab({
-           Name = "Eggs",
-           Icon = "rbxassetid://4483345998",
-           PremiumOnly = false
-        })
-        
-        local TPTab = Window:MakeTab({
-           Name = "Teleports",
-           Icon = "rbxassetid://4483345998",
-           PremiumOnly = false
-        })
-        
-        local miscTab = Window:MakeTab({
-           Name = "Misc",
-           Icon = "rbxassetid://4483345998",
-           PremiumOnly = false
-        })
-        
-        
-        local Section = PremiumTab:AddSection({
-            Name = "Booth Sniper"
-        })
-        
-        local Diamonds = 1
-        
-        PremiumTab:AddTextbox({
-            Name = "Minimum Diamonds Purchases",
-            Default = "100",
-            TextDisappear = true,
-            Callback = function(Diamonds)
-                print(Diamonds)
-            end	  
-        })
-        
-        local Huges = 1
-        
-        PremiumTab:AddTextbox({
-            Name = "Minimum Diamonds Purchases For Huges",
-            Default = "100000",
-            TextDisappear = true,
-            Callback = function(Huges)
-                print(Huges)
-            end	  
-        })
-        
-        PremiumTab:AddButton({
-            Name = "Start Buying",
-            Callback = function()
-                local Booths_Broadcast = game:GetService("ReplicatedStorage").Network:WaitForChild("Booths_Broadcast")
-        
-                if not getgenv().a then
-                    getgenv().a = true
-                    local vu = game:GetService("VirtualUser")
-                    game:GetService("Players").LocalPlayer.Idled:connect(function()
-                        vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-                        wait(1)
-                        vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-                    end)
-                end
-                
-                local function processListingInfo(uid, gems, item, version, shiny, amount, boughtFrom)
-                    print(uid, gems, item, version, shiny, amount, boughtFrom)
-                    print("BOUGHT FROM:", boughtFrom)
-                    print("UID:", uid)
-                    print("GEMS:", gems)
-                    print("ITEM:", item)
-                    local snipeMessage = game.Players.LocalPlayer.Name .. " just sniped a "
-                    if version then
-                        if version == 2 then
-                            version = "Rainbow"
-                        elseif version == 1 then
-                            version = "Golden"
-                        end
-                    else
-                       version = "Normal"
-                    end
-                    
-                    snipeMessage = snipeMessage .. version
-                    
-                    if shiny then
-                        snipeMessage = snipeMessage .. " Shiny"
-                    end
-                    
-                    snipeMessage = snipeMessage .. " " .. (item)
-                    
-                    print(snipeMessage)
-                    
-                    if amount then
-                        print("AMOUNT:", amount)
-                    else
-                        amount = 1
-                        print("AMOUNT:", amount)
-                    end
-                
-                    local fields = {
-                        {
-                            name = "PRICE:",
-                            value = tostring(gems) .. " GEMS",
-                            inline = true,
-                        },
-                        {
-                            name = "BOUGHT FROM:",
-                            value = tostring(boughtFrom),
-                            inline = true,
-                        },
-                        {
-                            name = "AMOUNT:",
-                            value = tostring(amount),
-                            inline = true,
-                        },
-                        {
-                            name = "PETID:",
-                            value = tostring(uid),
-                            inline = true,
-                        }
-                    }
-                
-                    local message = {
-                        content = "@everyone",
-                        embeds = {
-                            {
-                                title = snipeMessage,
-                                fields = fields,
-                                author = {name = "New Pet Sniped!"}
-                            }
-                        },
-                        username = "piratesniper",
-                        attachments = {}
-                    }
-                
-                    local http = game:GetService("HttpService")
-                    local jsonMessage = http:JSONEncode(message)
-                
-                    http:PostAsync(
-                        "https://discord.com/api/webhooks/1169441713035694090/eWVBntsl1sehvYE7i01IPy9BcBSovVsGbUQubexP2wXi4Rv9TWEzzOJ_BP02dehVRUZi",
-                        jsonMessage,
-                        Enum.HttpContentType.ApplicationJson,
-                        false
-                    )
-                end
-                
-                local function checklisting(uid, gems, item, version, shiny, amount, username, playerid)
-                    gems = tonumber(gems)
-                
-                    if string.find(item, "Huge") and gems <= Huges then
-                        game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-                        processListingInfo(uid, gems, item, version, shiny, amount, username)
-                    elseif gems <= Diamonds then
-                        game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-                        processListingInfo(uid, gems, item, version, shiny, amount, username)
-                    end
-                end
-                
-                Booths_Broadcast.OnClientEvent:Connect(function(username, message)
-                    local playerID = message['PlayerID']
-                    if type(message) == "table" then
-                        local listing = message["Listings"]
-                        for key, value in pairs(listing) do
-                            if type(value) == "table" then
-                                local uid = key
-                                local gems = value["DiamondCost"]
-                                local itemdata = value["ItemData"]
-                
-                                if itemdata then
-                                    local data = itemdata["data"]
-                
-                                    if data then
-                                        local item = data["id"]
-                                        local version = data["pt"]
-                                        local shiny = data["sh"]
-                                        local amount = data["_am"]
-                                        checklisting(uid, gems, item, version, shiny, amount, username , playerID)
-                                    end
-                                end
-                            end
-                        end
-                    end
-                end)
-                
-                print("hello")
-            end
-        })
-        
-        local Section = PremiumTab:AddSection({
-            Name = "Chest ESP"
-        })
-        
-        PremiumTab:AddButton({
-            Name = "teleport to digsite",
-            Callback = function()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.__THINGS.Instances.Digsite.Teleports.Enter.CFrame
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.__THINGS.__INSTANCE_CONTAINER.Active.Digsite.Important.Spawns:GetChildren()[6].CFrame
-            end
-        })
-        
-        PremiumTab:AddButton({
-            Name = "Chest ESP",
-            Callback = function()
-        chestsn = {
-            "Animated",
-            }
-        local function contains(table, val)
-           for i=1,#table do
-              if table[i] == val then return true end
-           end
-           return false
-        end
-        while true do
-        task.wait()
-        for __,v in pairs(game.Workspace["__THINGS"].__INSTANCE_CONTAINER.Active.Digsite.Important.ActiveChests:GetChildren()) do
-            if v:FindFirstChild("ESP") then v:FindFirstChild("ESP"):Destroy() end
-            if contains(chestsn, v.Name) then
-                if v.Name == "Animated" then
-                    tcolor = Color3.fromRGB(222, 184, 135)
-                end
-        
-                local a = Instance.new("BillboardGui",v)
-                a.Name = "ESP"
-                a.Size = UDim2.new(5,0, 5,0)
-                a.AlwaysOnTop = true
-                local b = Instance.new("Frame",a)
-                b.Size = UDim2.new(1,0, 1,0)
-                b.BackgroundTransparency = 0.80
-                b.BorderSizePixel = 0
-                b.BackgroundColor3 = tcolor
-                local c = Instance.new('TextLabel',b)
-                c.Size = UDim2.new(1,0,1,1)
-                c.BorderSizePixel = 0
-                c.TextSize = 17
-                c.Text = "Chest"
-                c.BackgroundTransparency = 1
-                c.TextColor3 = tcolor
-                c.TextStrokeColor3 = Color3.fromRGB(6, 6, 6)
-                c.TextStrokeTransparency = 0.7
-            end
-        end
-        end
-            end
-        })
-        
-        
-        PremiumTab:AddButton({
-            Name = "Chest autodig",
-            Callback = function()
-                spawn(function()
-                    while wait() do
-                    for i,v in pairs(workspace.__THINGS.__INSTANCE_CONTAINER.Active.Digsite.Important.ActiveBlocks:GetChildren()) do
-                    if v.Name == "Part" and (v.Position and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.Position).magnitude < 15) then
-                    for i = 1, 5 do
-                    local args = {
-                        [1] = "Digsite",
-                        [2] = "DigBlock",
-                        [3] = v:GetAttribute('Coord')
-                    }
-                    
-                    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Instancing_FireCustomFromClient"):FireServer(unpack(args))
-                    end
-                    wait(0.1)
-                    break
-                    end
-                    end
-                    end
-                    end)
-                    
-                    spawn(function()
-                    while wait() do
-                    for i,v in pairs(workspace.__THINGS.__INSTANCE_CONTAINER.Active.Digsite.Important.ActiveChests:GetChildren()) do
-                    if v.Name == "Part" and (v.Position and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.Position).magnitude < 20) then
-                    local args = {
-                        [1] = "Digsite",
-                        [2] = "DigChest",
-                        [3] = v:GetAttribute('Coord')
-                    }
-                    
-                    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Instancing_FireCustomFromClient"):FireServer(unpack(args))
-                    break
-                    end
-                    end
-                    end
-                    end)
-                end
-            })
+-- creating window
+local Window = OrionLib:MakeWindow({Name = "Tsuo Hub made by mani", HidePremium = false, IntroText = "by maniautisticx", SaveConfig = true, ConfigFolder = "Tsuo Hub"})
+
+
+ -- tabs
+
+ local CreditsTab = Window:MakeTab({
+   Name = "Credits/Discord",
+   Icon = "rbxassetid://4559100997",
+   PremiumOnly = false
+})
+
+local PremiumTab = Window:MakeTab({
+    Name = "Premium",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+ })
+
+ local MiniGamesTab = Window:MakeTab({
+   Name = "MiniGames",
+   Icon = "rbxassetid://4483345998",
+   PremiumOnly = false
+})
+
+local AutoFarmTab = Window:MakeTab({
+   Name = "AutoFarm",
+   Icon = "rbxassetid://4483345998",
+   PremiumOnly = false
+})
+
+local ShopTab = Window:MakeTab({
+   Name = "Shop",
+   Icon = "rbxassetid://4483345998",
+   PremiumOnly = false
+})
+
+local EggysTab = Window:MakeTab({
+   Name = "Eggs",
+   Icon = "rbxassetid://4483345998",
+   PremiumOnly = false
+})
+
+local TPTab = Window:MakeTab({
+   Name = "Teleports",
+   Icon = "rbxassetid://4483345998",
+   PremiumOnly = false
+})
+
+local miscTab = Window:MakeTab({
+   Name = "Misc",
+   Icon = "rbxassetid://4483345998",
+   PremiumOnly = false
+})
         
         getgenv().config = {
            farm = {
