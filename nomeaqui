@@ -477,8 +477,8 @@ PremiumTab:AddButton({
                toggle = false,
                singleTarget = false,
                farmPrint = false,
-               radius = 200,
-               wait = 0.0
+               radius = 150,
+               wait = 0.1
            },
            autoLootbag = false,
            autoOrb = false
@@ -624,26 +624,26 @@ PremiumTab:AddButton({
         
         AutoFarmTab:AddTextbox({
            Name = "Radius",
-           Default = "(Default: 70)",
+           Default = "(Default: 150)",
            TextDisappear = true,
            Callback = function(value)
                if tonumber(value) then
                    config.farm.radius = tonumber(value)
                else
-                   config.farm.radius = 40
+                   config.farm.radius = 150
                end
            end	  
         })
         
         AutoFarmTab:AddTextbox({
            Name = "Wait Time",
-           Default = "(Default: 0.2)",
+           Default = "(Default: 0.1)",
            TextDisappear = true,
            Callback = function(value)
                if tonumber(value) then
                    config.farm.wait = tonumber(value)
                else
-                   config.farm.wait = 0.2
+                   config.farm.wait = 0.1
                end
            end	  
         })
@@ -1494,8 +1494,8 @@ getgenv().config = {
        toggle = false,
        singleTarget = false,
        farmPrint = false,
-       radius = 70,
-       wait = 0.2
+       radius = 150,
+       wait = 0.1
    },
    autoLootbag = false,
    autoOrb = false
@@ -1641,26 +1641,26 @@ end
 
 AutoFarmTab:AddTextbox({
    Name = "Radius",
-   Default = "(Default: 70)",
+   Default = "(Default: 150)",
    TextDisappear = true,
    Callback = function(value)
        if tonumber(value) then
            config.farm.radius = tonumber(value)
        else
-           config.farm.radius = 40
+           config.farm.radius = 150
        end
    end	  
 })
 
 AutoFarmTab:AddTextbox({
    Name = "Wait Time",
-   Default = "(Default: 0.2)",
+   Default = "(Default: 0.1)",
    TextDisappear = true,
    Callback = function(value)
        if tonumber(value) then
            config.farm.wait = tonumber(value)
        else
-           config.farm.wait = 0.2
+           config.farm.wait = 0.1
        end
    end	  
 })
