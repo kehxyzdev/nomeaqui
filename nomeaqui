@@ -2,12 +2,7 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
 -- creating window
-local Window = OrionLib:MakeWindow({
-    Name = "Tsuo Hub made by mani", 
-    HidePremium = false, 
-    IntroText = "by maniautisticx", 
-    SaveConfig = true, 
-    ConfigFolder = "Tsuo Hub"})
+local Window = OrionLib:MakeWindow({Name = "Tsuo Hub | Made By Mani", HidePremium = true, IntroText = "Tsuo Hub", SaveConfig = true, ConfigFolder = "Tsuo Hub"})
 
 
  -- tabs
@@ -17,11 +12,12 @@ local Window = OrionLib:MakeWindow({
    Icon = "rbxassetid://4559100997",
    PremiumOnly = false
 })
-local SectionTabPremium = Window:MakeTab({
+
+local PremiumTab = Window:MakeTab({
     Name = "Premium",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
-})
+ })
 
  local MiniGamesTab = Window:MakeTab({
    Name = "MiniGames",
@@ -59,79 +55,186 @@ local miscTab = Window:MakeTab({
    PremiumOnly = false
 })
 
-local Section = SectionTabPremium:AddSection({
+local Section = PremiumTab:AddSection({
     Name = "Purchase Premium On Discord!"
 })
-      
-local CreditsTab = Window:MakeTab({
-    Name = "Credits/Discord",
-    Icon = "rbxassetid://4559100997",
-    PremiumOnly = false
-})
-        
-local MiniGamesTab = Window:MakeTab({
-    Name = "MiniGames",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false
-})
-local AutoFarmTab = Window:MakeTab({
-    Name = "AutoFarm",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false
-})
 
-local ShopTab = Window:MakeTab({
-    Name = "Shop",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false
-})
-
-local EggysTab = Window:MakeTab({
-    Name = "Eggs",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false
-})
+PremiumTab:AddButton({
+	Name = "open premium version",
+	Callback = function()
+        getgenv().keys = {
+            'KaizenHubv2-1824SDFNAci',
+            'KaizenHubv2-3680dslaVCr',
+            'KaizenHubv2-3460SAaskzx',
+            'KaizenHubv2-2042CAXpzpA',
+            'KaizenHubv2-3612DdhgMSD',
+            'KaizenHubv2-2748ADjcasf',
+            'KaizenHubv2-8490cASKnfa',
+            'KaizenHubv2-6913KFsASpx',
+            'KaizenHubv2-2362SDFMOSZ',
+            'KaizenHubv2-6388ADNiAXO',
+            'KaizenHubv2-4858aLeoLdS',
+            'KaizenHubv2-2580FKSgemW',
+            'KaizenHubv2-8383SrTrVCs',
+            'KaizenHubv2-1920OAcZXiw',
+            'KaizenHubv2-7492DAFmlzx',
+            'KaizenHubv2-1390cAoxzpA',
+            'KaizenHubv2-8967XLaFwen',
+            'KaizenHubv2-5473FPdozxw',
+            'KaizenHubv2-3790LAxofap',
+            'KaizenHubv2-8967XLaFwen',
+            'KaizenHubv2-2195ASofbBp',
+            'KaizenHubv2-2398DVXkzxf',
+            'KaizenHubv2-2359XXlfDpd',
+            'KaizenHubv2-2639XZpxssO',
+            'KaizenHubv2-2690XzxkASp',
+            'KaizenHubv2-4937AZosPAf',
+            'KaizenHubv2-2740XZopdfD',
+            'KaizenHubv2-4790DodfSpa',
+            'KaizenHubv2-1390cAoxzpA',
+            'KaizenHubv2-1920OAcZXiw',
+            'KaizenHubv2-2369xCOapwf',
+            'KaizenHubv2-2970COjxzid',
+            'KaizenHubv2-4794XAfjozS',
+            'KaizenHubv2-2969ZXojfap',
+            'KaizenHubv2-6496JMFSDOF',
+            'KaizenHubv2-4589SKFDANz',
+            'KaizenHubv2-2369XCFlspA',
+            'KaizenHubv2-0234SAMzxpd',
+            'KaizenHubv2-2359ASDGnkz',
+            'KaizenHubv2-2369Xmlzxop',
+            'KaizenHubv2-1235SADNsal',
+            'KaizenHubv2-2901MAlzoap',
+            'KaizenHubv2-2690XLmasoz',
+            'KaizenHubv2-6139AXOzoxc',
+            'KaizenHubv2-1234abchdef',
+            'KaizenHubv2-5678ijklmno',
+            'KaizenHubv2-9012qrstuvw',
+            'KaizenHubv2-3456yzabcdg',
+            'KaizenHubv2-7890efghijk',
+            'KaizenHubv2-2345mnopqrs',
+            'KaizenHubv2-6789uvwxabc',
+            'KaizenHubv2-0123efghijk',
+            'KaizenHubv2-4567mnopqrs',
+            'KaizenHubv2-8901uvwxabc',
+            'KaizenHubv2-7345wASDGSx',
+            'KaizenHubv2-6793WFGASzx',
+            'KaizenHubv2-2356XZwZxZA',
+            'KaizenHubv2-4367XfreuyX',
+            'KaizenHubv2-4583HRADLmz',
+            'KaizenHubv2-3457DfmdosA',
+            'KaizenHubv2-34235psIzxn',
+            'KaizenHubv2-3475Hrpasdi',
+            'KaizenHubv2-2356jdeIIHS'
+        }
         
-local TPTab = Window:MakeTab({
-    Name = "Teleports",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false
-})
-
-local miscTab = Window:MakeTab({
-    Name = "Misc",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false
-})
+        getgenv().validKey = true
+        
+        -- anti afk
+        
+        wait(0.5)
+        
+        local bb = game:GetService("VirtualUser")
+        game:GetService("Players").LocalPlayer.Idled:Connect(function()
+            bb:CaptureController()
+            bb:ClickButton2(Vector2.new())
+        end)
         
         
-local Section = SectionTabPremium:AddSection({
-    Name = "Booth Sniper"
-})
-
-local Diamonds = 1
-
-SectionTabPremium:AddTextbox({
-    Name = "Minimum Diamonds Purchases",
-    Default = "100",
-    TextDisappear = true,
-    Callback = function(Diamonds)
-        print(Diamonds)
-    end	  
-})
+        getgenv().MessageBox = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/NotificationGUI/main/source.lua"))()
         
-local Huges = 1
+        if getgenv().validKey then
+            getgenv().MessageBox.Show({MessageBoxButtons = "OK", Description = "Your Key Was Valid!", Text = "Key System v1 | ⚠️Sharing Key = HWID BANNED⚠️"})
+        else
+            getgenv().MessageBox.Show({MessageBoxButtons = "OK", Description = "Your Key Was Invalid!", Text = "Key System v1"})
+        return
+        end
 
-SectionTabPremium:AddTextbox({
-    Name = "Minimum Diamonds Purchases For Huges",
-    Default = "100000",
-    TextDisappear = true,
-    Callback = function(Huges)
-        print(Huges)
-    end	  
-})
+        -- Booting The Library
+        local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
         
-        SectionTabPremium:AddButton({
+        -- creating window
+        local Window = OrionLib:MakeWindow({Name = "Tsuo Hub | Made By Mani", HidePremium = true, IntroText = "Tsuo Hub", SaveConfig = true, ConfigFolder = "Tsuo Hub"})
+        
+        
+         -- tabs
+        
+         local CreditsTab = Window:MakeTab({
+           Name = "Credits/Discord",
+           Icon = "rbxassetid://4559100997",
+           PremiumOnly = false
+        })
+        
+         local MiniGamesTab = Window:MakeTab({
+           Name = "MiniGames",
+           Icon = "rbxassetid://4483345998",
+           PremiumOnly = false
+        })
+        
+        local PremiumTab = Window:MakeTab({
+            Name = "Premium",
+            Icon = "rbxassetid://4483345998",
+            PremiumOnly = false
+         })
+        
+        local AutoFarmTab = Window:MakeTab({
+           Name = "AutoFarm",
+           Icon = "rbxassetid://4483345998",
+           PremiumOnly = false
+        })
+        
+        local ShopTab = Window:MakeTab({
+           Name = "Shop",
+           Icon = "rbxassetid://4483345998",
+           PremiumOnly = false
+        })
+        
+        local EggysTab = Window:MakeTab({
+           Name = "Eggs",
+           Icon = "rbxassetid://4483345998",
+           PremiumOnly = false
+        })
+        
+        local TPTab = Window:MakeTab({
+           Name = "Teleports",
+           Icon = "rbxassetid://4483345998",
+           PremiumOnly = false
+        })
+        
+        local miscTab = Window:MakeTab({
+           Name = "Misc",
+           Icon = "rbxassetid://4483345998",
+           PremiumOnly = false
+        })
+        
+        
+        local Section = PremiumTab:AddSection({
+            Name = "Booth Sniper"
+        })
+        
+        local Diamonds = 1
+        
+        PremiumTab:AddTextbox({
+            Name = "Minimum Diamonds Purchases",
+            Default = "100",
+            TextDisappear = true,
+            Callback = function(Diamonds)
+                print(Diamonds)
+            end	  
+        })
+        
+        local Huges = 1
+        
+        PremiumTab:AddTextbox({
+            Name = "Minimum Diamonds Purchases For Huges",
+            Default = "100000",
+            TextDisappear = true,
+            Callback = function(Huges)
+                print(Huges)
+            end	  
+        })
+        
+        PremiumTab:AddButton({
             Name = "Start Buying",
             Callback = function()
                 local Booths_Broadcast = game:GetService("ReplicatedStorage").Network:WaitForChild("Booths_Broadcast")
@@ -269,11 +372,11 @@ SectionTabPremium:AddTextbox({
             end
         })
         
-        local Section = SectionTabPremium:AddSection({
+        local Section = PremiumTab:AddSection({
             Name = "Chest ESP"
         })
         
-        SectionTabPremium:AddButton({
+        PremiumTab:AddButton({
             Name = "teleport to digsite",
             Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.__THINGS.Instances.Digsite.Teleports.Enter.CFrame
@@ -281,7 +384,7 @@ SectionTabPremium:AddTextbox({
             end
         })
         
-        SectionTabPremium:AddButton({
+        PremiumTab:AddButton({
             Name = "Chest ESP",
             Callback = function()
         chestsn = {
@@ -327,7 +430,7 @@ SectionTabPremium:AddTextbox({
         })
         
         
-        SectionTabPremium:AddButton({
+        PremiumTab:AddButton({
             Name = "Chest autodig",
             Callback = function()
                 spawn(function()
@@ -1176,7 +1279,7 @@ SectionTabPremium:AddTextbox({
             Callback = function()
                 OrionLib:MakeNotification({
                     Name = "Tsuo Hub",
-                    Content = "Discord Link Copied",
+                    Content = "Discord Link Copied To Clipboard",
                     Image = "rbxassetid://4483345998",
                     Time = 5
                 })
@@ -2197,14 +2300,14 @@ ShopTab:AddButton({
    end
 })
 
-CreditsTab:AddParagraph("made by mani","Discord Server Tsuo")
+CreditsTab:AddParagraph("Made By Mani","Discord Server Tsuo")
 
 CreditsTab:AddButton({
     Name = "Copy Discord",
     Callback = function()
         OrionLib:MakeNotification({
             Name = "Tsuo Hub",
-            Content = "Discord Link Copied",
+            Content = "Discord Link Copied To Clipboard",
             Image = "rbxassetid://4483345998",
             Time = 5
         })
