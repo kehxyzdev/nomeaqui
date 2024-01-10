@@ -48,10 +48,6 @@ local miscTab = Window:MakeTab({
    Icon = "rbxassetid://4483345998",
    PremiumOnly = false
 })
-
-local Section = PremiumTab:AddSection({
-    Name = "Purchase Premium On Discord!"
-})
         -- Booting The Library
         local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
         
