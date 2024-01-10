@@ -48,56 +48,6 @@ local miscTab = Window:MakeTab({
    Icon = "rbxassetid://4483345998",
    PremiumOnly = false
 })
-        -- Booting The Library
-        local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-        
-        -- creating window
-        local Window = OrionLib:MakeWindow({Name = "Tsuo Hub made by mani", HidePremium = true, IntroText = "by maniautisticx", SaveConfig = true, ConfigFolder = "Tsuo Hub"})
-        
-        
-         -- tabs
-        
-         local CreditsTab = Window:MakeTab({
-           Name = "Credits/Discord",
-           Icon = "rbxassetid://4559100997",
-           PremiumOnly = false
-        })
-        
-         local MiniGamesTab = Window:MakeTab({
-           Name = "MiniGames",
-           Icon = "rbxassetid://4483345998",
-           PremiumOnly = false
-        })
-        
-        local AutoFarmTab = Window:MakeTab({
-           Name = "AutoFarm",
-           Icon = "rbxassetid://4483345998",
-           PremiumOnly = false
-        })
-        
-        local ShopTab = Window:MakeTab({
-           Name = "Shop",
-           Icon = "rbxassetid://4483345998",
-           PremiumOnly = false
-        })
-        
-        local EggysTab = Window:MakeTab({
-           Name = "Eggs",
-           Icon = "rbxassetid://4483345998",
-           PremiumOnly = false
-        })
-        
-        local TPTab = Window:MakeTab({
-           Name = "Teleports",
-           Icon = "rbxassetid://4483345998",
-           PremiumOnly = false
-        })
-        
-        local miscTab = Window:MakeTab({
-           Name = "Misc",
-           Icon = "rbxassetid://4483345998",
-           PremiumOnly = false
-        })
         
         getgenv().config = {
            farm = {
