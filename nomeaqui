@@ -1,1 +1,144 @@
-nig
+local CheckMobile = function()
+  if
+      game:GetService("UserInputService").TouchEnabled
+   then
+      return true 
+  end
+end 
+IsMobile = CheckMobile()
+local UserInputService = game:GetService("UserInputService")
+local RunService = game:GetService("RunService")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local GuiService = game:GetService("GuiService")
+
+local screenResolution = GuiService:GetScreenResolution()
+local screenWidth = screenResolution.X
+local screenHeight = screenResolution.Y
+
+local windowWidth = screenWidth * 0.6
+local windowHeight = screenHeight * 0.6
+
+-- UDim2.fromOffset(580, 460),
+if not IsMobile then 
+  windowWidth,windowHeight = 600,460  
+else
+  local ClickButton = Instance.new("ScreenGui")
+  local MainFrame = Instance.new("Frame")
+  local ImageLabel = Instance.new("ImageLabel")
+  local TextButton = Instance.new("TextButton") 
+  local UICorner = Instance.new("UICorner") 
+  local UICorner_2 = Instance.new("UICorner")
+  if game.CoreGui:FindFirstChild("ClickButton") then 
+      game.CoreGui:FindFirstChild("ClickButton"):Destroy()
+  end
+  ClickButton.Name = "ClickButton"
+  ClickButton.Parent = game.CoreGui
+  ClickButton.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+  
+  MainFrame.Name = "MainFrame"
+  MainFrame.Parent = ClickButton
+  MainFrame.Active = true
+  MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+  MainFrame.BackgroundColor3 = Color3.new(1, 1, 1)
+  MainFrame.BorderColor3 = Color3.new(0, 0, 0)
+  MainFrame.BorderSizePixel = 0
+  MainFrame.Transparency = 1
+  MainFrame.Position = UDim2.new(0.187441245, 0, 0.476932675, 0)
+  MainFrame.Size = UDim2.new(0, 45, 0, 45)
+  
+  UICorner.CornerRadius = UDim.new(0, 100)
+  UICorner.Parent = MainFrame
+  
+  UICorner_2.CornerRadius = UDim.new(0, 100)
+  UICorner_2.Parent = ImageLabel
+  
+  ImageLabel.Parent = MainFrame
+  ImageLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+  ImageLabel.BackgroundColor3 = Color3.new(0, 0, 0)
+  ImageLabel.BorderColor3 = Color3.new(0, 0, 0)
+  ImageLabel.BorderSizePixel = 0
+  ImageLabel.Position = UDim2.new(0.48888889, 0, 0.48888889, 0)
+  ImageLabel.Size = UDim2.new(0, 45, 0, 45)
+  ImageLabel.Image = "rbxassetid://15241946029"
+  
+  TextButton.Parent = MainFrame
+  TextButton.BackgroundColor3 = Color3.new(1, 1, 1)
+  TextButton.BackgroundTransparency = 1
+  TextButton.BorderColor3 = Color3.new(0, 0, 0)
+  TextButton.BorderSizePixel = 0
+  TextButton.Position = UDim2.new(3.3908421e-07, 0, 0, 0)
+  TextButton.Size = UDim2.new(0, 45, 0, 45)
+  TextButton.AutoButtonColor = false
+  TextButton.Font = Enum.Font.SourceSans
+  TextButton.Text = ""
+  TextButton.TextColor3 = Color3.new(255, 255, 255)
+  TextButton.TextSize = 15
+  TextButton.MouseButton1Click:Connect(function()
+      game:GetService("VirtualInputManager"):SendKeyEvent(true,"LeftControl",false,game)
+      game:GetService("VirtualInputManager"):SendKeyEvent(false,"LeftControl",false,game)
+  end)
+end  
+
+local Window = Fluent:CreateWindow({
+  Title = "TsuoHub",
+  SubTitle = "universal // develoed by mani-",
+  TabWidth = 160,
+  Size = UDim2.new(0, windowWidth, 0, windowHeight),
+  Acrylic = false, -- The blur may be detectable, setting this to false disables blur entirely
+  Theme = "Dark",
+  MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
+})
+
+-- Fluent provides Lucide Icons https://lucide.dev/icons/ for the tabs, icons are optional
+local Tabs = {
+  Credits = Window:AddTab({
+      Title = "Discord",
+      Icon = "gem"
+  }),
+  Universal = Window:AddTab({
+      Title = "Universal",
+      Icon = "alert-octagon"
+  }),
+  LocalPlayer = Window:AddTab({
+      Title = "LocalPlayer",
+      Icon = "pipette"
+  }),
+}
+
+Tabs.Credits:AddButton({
+    Title = "Tsuo Discord Servee (Click 1x)",
+    Description = "Copy Link Discord Server",
+    Callback = function()
+       setclipboard("https://discord.com/invite/tsuoscripts")
+    end
+})
+
+do
+
+local Slider = Tabs.LocalPlayer:AddSlider("Speed", {
+     Title = "Walk-Speed",
+     Description = "",
+     Default = 16,
+     Min = 16,
+     Max = 150,
+     Rounding = 1,
+     Callback = function(Value)
+      Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+    end
+})
+
+local Slider = Tabs.LocalPlayer:AddSlider("Jump", {
+     Title = "Jump-Power",
+     Description = "",
+     Default = 50,
+     Min = 50,
+     Max = 200,
+     Rounding = 1,
+     Callback = function(Value)
+      game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+    end
+  })
+end
